@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # See here for more information: https://github.com/actualbudget/actual/tree/master/packages/desktop-client#visual-regression
 
