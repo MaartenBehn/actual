@@ -17,6 +17,7 @@ import {
   type NoteEntity,
 } from 'loot-core/types/models';
 import { type EnableBankingToken } from 'loot-core/types/models/enablebanking';
+import { type Template } from 'loot-core/types/models/templates';
 
 import { resetApp, setAppState } from '@desktop-client/app/appSlice';
 import { type SelectLinkedAccountsModalProps } from '@desktop-client/components/modals/SelectLinkedAccountsModal';
@@ -557,6 +558,13 @@ export type Modal =
       name: 'category-automations-edit';
       options: {
         categoryId: CategoryEntity['id'];
+      };
+    }
+  | {
+      name: 'category-automations-unmigrate';
+      options: {
+        categoryId: CategoryEntity['id'];
+        templates: Template[];
       };
     };
 
