@@ -294,7 +294,7 @@ export const enableBankingservice = {
     );
     if (bankProcessor.debug) {
       console.debug(
-        `--- Debugging '${bankProcessor.name}': showing first 5 transactions with processed transactions.---`,
+        `--- Debugging '${bankProcessor.name}': showing first 2 transactions with processed transactions.---`,
       );
       transactions.slice(0, 2).forEach(transaction => {
         console.debug('# ORIGINAL:');
@@ -311,8 +311,8 @@ export const enableBankingservice = {
       console.debug(`--- End of transactions ---`);
     }
 
-    return transactions.map(transaction =>
-      bankProcessor.normalizeTransaction(transaction),
-    );
+    return transactions
+      .filter(transaction => !bankProcessor.skipTransaction(transaction))
+      .map(transaction => bankProcessor.normalizeTransaction(transaction));
   },
 };
