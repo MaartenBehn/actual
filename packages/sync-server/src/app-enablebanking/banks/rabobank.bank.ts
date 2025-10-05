@@ -8,12 +8,12 @@ import { FallbackBankProcessor } from './fallback.bank.js';
 export class RabobankBankProcessor extends FallbackBankProcessor {
   name = 'RabobankBankProcessor';
 
-  skipTransaction(t: components['schemas']['Transaction']): boolean {
-    return false;
-  }
-
   normalizeTransaction(t: components['schemas']['Transaction']): Transaction {
     const transaction = super.normalizeTransaction(t);
     return transaction;
+  }
+
+  skipTransaction(t: Transaction): boolean {
+    return super.skipTransaction(t);
   }
 }
