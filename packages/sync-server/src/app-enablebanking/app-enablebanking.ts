@@ -480,6 +480,12 @@ app.post(
   handleError(async (req: Request, res: Response) => {
     const { accountId, startDate } = req.body || {};
 
+    console.log("accountId");
+    console.log(accountId);
+
+    console.log("startDate");
+    console.log(startDate);
+
     if (!accountId || !startDate) {
       res.send({
         status: 'ok',
@@ -492,6 +498,9 @@ app.post(
     }
 
     const psuHeaders = extractPsuHeaders(req);
+
+    console.log("psuHeaders");
+    console.log(psuHeaders);
 
     try {
       const dateTo = new Date().toISOString().split('T')[0];
