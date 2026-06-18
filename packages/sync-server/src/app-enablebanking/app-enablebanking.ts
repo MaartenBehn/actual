@@ -34,27 +34,17 @@ app.use(express.json());
 // --- Shared helpers ---
 
 function extractPsuHeaders(req: Request): PsuHeaders {
+  const PUBLIC_IP = '138.199.203.38';
+
   const ip = req.ip;
   const ua =
     typeof req.headers['user-agent'] === 'string'
       ? req.headers['user-agent']
       : undefined;
 
-  if (!ip || isBlockedIp(ip)) {
-    debug('Skipping PSU headers because PSU IP is local/private');
-    return {};
-  }
-
-  const headers: PsuHeaders = {
-    'Psu-Ip-Address': ip,
-  };
-
-  if (ua) {
-    headers['Psu-User-Agent'] = ua;
-  }
-
-  debug('Using PSU headers for public PSU IP');
-
+  const headers: PsuHeaders = {};
+  if (ip) headers['Psu-Ip-Address'] = PUBLIC_IP;
+  if (ua) headers['Psu-User-Agent'] = ua;
   return headers;
 }
 
