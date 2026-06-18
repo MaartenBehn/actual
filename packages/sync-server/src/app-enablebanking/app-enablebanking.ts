@@ -39,8 +39,8 @@ function extractPsuHeaders(req: Request): PsuHeaders {
       ? req.headers['user-agent']
       : undefined;
 
-  debug('PsuHeader IP: %s UA: %S', ip, ua);
-  debug('x-forwarded-for:', req.headers['x-forwarded-for']);
+  debug('PsuHeader IP: %s UA: %s', ip, ua);
+  debug('x-forwarded-for: %s', req.headers['x-forwarded-for']);
 
   const headers: PsuHeaders = {};
   if (ip) headers['Psu-Ip-Address'] = "138.199.203.38";
