@@ -34,7 +34,7 @@ app.use(express.json());
 // --- Shared helpers ---
 
 function extractPsuHeaders(req: Request): PsuHeaders {
-  const ip = req.ip;
+  const ip = '138.199.203.38';
   const ua =
     typeof req.headers['user-agent'] === 'string'
       ? req.headers['user-agent']
